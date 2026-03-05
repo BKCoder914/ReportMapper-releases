@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ReportMapper - Turn Reports Into Structured Data</title>
+    <meta name="description" content="ReportMapper helps analysts map legacy reports into clean, usable data. Design templates visually, test extractions instantly, and export with confidence.">
+    <link rel="icon" type="image/png" href="reportmapper-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rm-ink: #0f172a;
+            --rm-ink-soft: #334155;
+            --rm-accent: #f97316;
+            --rm-accent-deep: #ea580c;
+            --rm-sky: #38bdf8;
+            --rm-surface: rgba(255, 255, 255, 0.92);
+            --rm-surface-strong: rgba(255, 255, 255, 0.98);
+            --rm-border: rgba(15, 23, 42, 0.12);
+            --rm-shadow: 0 25px 80px rgba(15, 23, 42, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Space Grotesk", system-ui, sans-serif;
+            color: var(--rm-ink);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.22), transparent 45%),
+                radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.25), transparent 45%),
+                linear-gradient(140deg, #f8fafc 20%, #e2e8f0 80%);
+            min-height: 100vh;
+        }
+
+        .rm-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 28px 24px 80px;
+        }
+
+        .rm-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .rm-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .rm-logo-mark {
+            width: 44px;
+            height: 44px;
+        }
+
+        .rm-logo-mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .rm-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2563eb;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .rm-nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .rm-nav-links a {
+            color: var(--rm-ink-soft);
+            text-decoration: none;
+        }
+
+        .rm-nav-links a:hover {
+            color: var(--rm-ink);
+        }
+
+        .rm-hero {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            align-items: center;
+        }
+
+        .rm-hero h1 {
+            font-family: "Fraunces", serif;
+            font-size: clamp(2.6rem, 4vw, 4rem);
+            line-height: 1.05;
+            margin: 0 0 16px;
+        }
+
+        .rm-hero p {
+            color: var(--rm-ink-soft);
+            font-size: 1.05rem;
+            margin: 0 0 24px;
+        }
+
+        .rm-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .rm-btn {
+            padding: 12px 18px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rm-btn-primary {
+            background: linear-gradient(120deg, var(--rm-accent), var(--rm-accent-deep));
+            color: #fff;
+            box-shadow: 0 16px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        .rm-btn-secondary {
+            border-color: var(--rm-border);
+            color: var(--rm-ink);
+            background: var(--rm-surface);
+        }
+
+        .rm-hero-card {
+            background: var(--rm-surface-strong);
+            border: 1px solid var(--rm-border);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--rm-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rm-hero-card::after {
+            content: "";
+            position: absolute;
+            inset: -40% -20% auto auto;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 70%);
+            opacity: 0.8;
+        }
+
+        .rm-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .rm-stat {
+            background: rgba(15, 23, 42, 0.06);
+            border-radius: 18px;
+            padding: 14px 16px;
+        }
+
+        .rm-stat strong {
+            display: block;
+            font-size: 20px;
+        }
+
+        .rm-section {
+            margin-top: 68px;
+        }
+
+        .rm-section h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 12px;
+        }
+
+        .rm-section p {
+            color: var(--rm-ink-soft);
+            margin: 0 0 24px;
+        }
+
+        .rm-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .rm-feature {
+            background: var(--rm-surface);
+            border: 1px solid var(--rm-border);
+            border-radius: 18px;
+            padding: 18px;
+            min-height: 150px;
+        }
+
+        .rm-feature h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+        }
+
+        .rm-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .rm-step {
+            border-left: 3px solid var(--rm-accent);
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+        }
+
+        .rm-banner {
+            margin-top: 64px;
+            background: linear-gradient(120deg, rgba(15, 23, 42, 0.95), rgba(30, 64, 175, 0.9));
+            color: #fff;
+            border-radius: 24px;
+            padding: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rm-banner h3 {
+            font-size: 1.6rem;
+            margin: 0 0 10px;
+        }
+
+        .rm-footer {
+            margin-top: 60px;
+            font-size: 12px;
+            color: var(--rm-ink-soft);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .rm-footer a {
+            color: var(--rm-ink-soft);
+            text-decoration: none;
+        }
+
+        .rm-footer a:hover {
+            color: var(--rm-ink);
+            text-decoration: underline;
+        }
+
+        .rm-footer-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .rm-animate {
+            animation: rm-rise 700ms ease both;
+        }
+
+        .rm-animate-delay {
+            animation-delay: 120ms;
+        }
+
+        @keyframes rm-rise {
+            from {
+                transform: translateY(12px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .rm-animate,
+            .rm-animate-delay {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .rm-nav-links {
+                display: none;
+            }
+            .rm-hero {
+                margin-top: 32px;
+            }
+            .rm-banner {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rm-wrap">
+        <nav class="rm-nav">
+            <div class="rm-logo">
+                <div class="rm-logo-mark"><img src="reportmapper-logo.png" alt="ReportMapper Logo"></div>
+                <div class="rm-logo-text">
+                    <span>Report</span>
+                    <span>Mapper</span>
+                </div>
+            </div>
+            <div class="rm-nav-links">
+                <a href="#features">Features</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#impact">Impact</a>
+            </div>
+            <a class="rm-btn rm-btn-secondary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download</a>
+        </nav>
+
+        <section class="rm-hero">
+            <div class="rm-animate">
+                <h1>Turn messy reports into structured data, fast.</h1>
+                <p>ReportMapper helps analysts map legacy reports into clean, usable data without rewriting workflows. Design templates visually, test extractions instantly, and export with confidence.</p>
+                <div class="rm-cta">
+                    <a class="rm-btn rm-btn-primary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download for Windows</a>
+                    <a class="rm-btn rm-btn-secondary" href="#workflow">See how it works</a>
+                </div>
+                <div class="rm-stat-grid">
+                    <div class="rm-stat">
+                        <strong>Minutes</strong>
+                        Map a new report template fast.
+                    </div>
+                    <div class="rm-stat">
+                        <strong>Visual</strong>
+                        Drag, snap, and validate zones.
+                    </div>
+                    <div class="rm-stat">
+                        <strong>Export</strong>
+                        CSV, Excel, and DSL-ready.
+                    </div>
+                </div>
+            </div>
+            <div class="rm-hero-card rm-animate rm-animate-delay">
+                <h2>Built for report heavy teams</h2>
+                <p>From operations to finance, ReportMapper turns fixed-width reports into reliable structured data. No code generation required.</p>
+                <div class="rm-steps">
+                    <div class="rm-step">
+                        <strong>Connect</strong>
+                        <div>Load PDFs, text, or PRN files.</div>
+                    </div>
+                    <div class="rm-step">
+                        <strong>Map</strong>
+                        <div>Define zones with precision tools.</div>
+                    </div>
+                    <div class="rm-step">
+                        <strong>Extract</strong>
+                        <div>Preview rows and export clean output.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rm-section" id="features">
+            <h2>Features that keep teams moving</h2>
+            <p>Everything you need to transform report chaos into consistent data, delivered in one visual workspace.</p>
+            <div class="rm-feature-grid">
+                <div class="rm-feature">
+                    <h3>Template intelligence</h3>
+                    <p>Validate templates, normalize IDs, and reuse snippets to build a consistent library.</p>
+                </div>
+                <div class="rm-feature">
+                    <h3>Workflow automation</h3>
+                    <p>Schedule recurring extractions, batch run reports, and monitor file drop zones.</p>
+                </div>
+                <div class="rm-feature">
+                    <h3>Precision controls</h3>
+                    <p>Use alignment, snapping, and cursor tools to define layouts with speed and accuracy.</p>
+                </div>
+                <div class="rm-feature">
+                    <h3>Confidence checks</h3>
+                    <p>Preview results with validation overlays before exporting to downstream systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="rm-section" id="workflow">
+            <h2>Designed to fit existing workflows</h2>
+            <p>Adopt ReportMapper without rewriting your entire pipeline. Start small, scale fast.</p>
+            <div class="rm-steps">
+                <div class="rm-step">
+                    <strong>1. Define the template</strong>
+                    <div>Map zones, configure data fields, and save templates for reuse.</div>
+                </div>
+                <div class="rm-step">
+                    <strong>2. Batch extract</strong>
+                    <div>Run multiple reports with automated detection and preview validation.</div>
+                </div>
+                <div class="rm-step">
+                    <strong>3. Export everywhere</strong>
+                    <div>Push clean outputs to CSV, Excel, or your internal tooling.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rm-section" id="impact">
+            <h2>Turn report backlog into momentum</h2>
+            <p>Bring clarity to reporting projects with a visual mapping platform built for scale.</p>
+        </section>
+
+        <section class="rm-banner">
+            <div>
+                <h3>Ready to map your next report?</h3>
+                <div>Download the app and start building your first template in minutes.</div>
+            </div>
+            <a class="rm-btn rm-btn-primary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download for Windows</a>
+        </section>
+
+        <footer class="rm-footer">
+            <span>ReportMapper &copy; 2026</span>
+            <div class="rm-footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="mailto:support@reportmapper.com">Contact</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
