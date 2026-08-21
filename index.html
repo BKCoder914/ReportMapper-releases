@@ -116,6 +116,31 @@
             margin: 0 0 24px;
         }
 
+        .rm-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            color: var(--rm-ink-soft);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            backdrop-filter: blur(10px);
+        }
+
+        .rm-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--rm-accent), var(--rm-sky));
+            box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.12);
+        }
+
         .rm-cta {
             display: flex;
             flex-wrap: wrap;
@@ -132,6 +157,11 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .rm-btn:hover {
+            transform: translateY(-1px);
         }
 
         .rm-btn-primary {
@@ -146,6 +176,11 @@
             background: var(--rm-surface);
         }
 
+        .rm-btn-secondary:hover {
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+            border-color: rgba(15, 23, 42, 0.18);
+        }
+
         .rm-hero-card {
             background: var(--rm-surface-strong);
             border: 1px solid var(--rm-border);
@@ -154,6 +189,14 @@
             box-shadow: var(--rm-shadow);
             position: relative;
             overflow: hidden;
+        }
+
+        .rm-hero-card h2,
+        .rm-plan h3,
+        .rm-feature h3,
+        .rm-section h2,
+        .rm-banner h3 {
+            font-family: "Fraunces", serif;
         }
 
         .rm-hero-card::after {
@@ -166,11 +209,103 @@
             opacity: 0.8;
         }
 
+        .rm-hero-shot {
+            position: relative;
+            z-index: 1;
+            margin: -4px 0 18px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16);
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        .rm-hero-shot img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .rm-hero-shot-caption {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            background: rgba(15, 23, 42, 0.08);
+        }
+
+        .rm-hero-shot-caption span {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--rm-ink-soft);
+        }
+
+        .rm-panel-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--rm-ink-soft);
+            margin-bottom: 14px;
+        }
+
+        .rm-checklist {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .rm-check {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 10px;
+            align-items: start;
+            color: var(--rm-ink-soft);
+            font-size: 14px;
+        }
+
+        .rm-check::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--rm-accent), var(--rm-sky));
+            box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.88);
+            margin-top: 1px;
+        }
+
         .rm-stat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 16px;
             margin-top: 24px;
+        }
+
+        .rm-proof-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .rm-proof-chip {
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 16px;
+            padding: 12px 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .rm-proof-chip strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .rm-proof-chip span {
+            color: var(--rm-ink-soft);
+            font-size: 12px;
         }
 
         .rm-stat {
@@ -204,17 +339,66 @@
             gap: 18px;
         }
 
+        .rm-audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .rm-audience-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.74));
+            border: 1px solid var(--rm-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+        }
+
+        .rm-audience-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.08);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .rm-audience-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+            font-family: "Fraunces", serif;
+        }
+
+        .rm-audience-card p {
+            margin: 0;
+            color: var(--rm-ink-soft);
+        }
+
         .rm-feature {
             background: var(--rm-surface);
             border: 1px solid var(--rm-border);
             border-radius: 18px;
             padding: 18px;
             min-height: 150px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .rm-feature:hover,
+        .rm-plan:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
         }
 
         .rm-feature h3 {
             margin: 0 0 8px;
             font-size: 1.05rem;
+        }
+
+        .rm-feature p {
+            margin-bottom: 0;
         }
 
         .rm-steps {
@@ -228,6 +412,71 @@
             padding: 10px 16px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 16px;
+        }
+
+        .rm-plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .rm-plan {
+            background: var(--rm-surface-strong);
+            border: 1px solid var(--rm-border);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .rm-plan-highlight {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.92));
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .rm-plan-highlight p,
+        .rm-plan-highlight li,
+        .rm-plan-highlight .rm-plan-note {
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .rm-plan-kicker {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.08);
+            margin-bottom: 14px;
+        }
+
+        .rm-plan-highlight .rm-plan-kicker {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .rm-price {
+            font-family: "Fraunces", serif;
+            font-size: 2rem;
+            margin: 10px 0 8px;
+        }
+
+        .rm-plan ul {
+            margin: 16px 0 0;
+            padding-left: 18px;
+            color: var(--rm-ink-soft);
+        }
+
+        .rm-plan li + li {
+            margin-top: 8px;
+        }
+
+        .rm-plan-note {
+            color: var(--rm-ink-soft);
+            font-size: 13px;
+            margin-top: 14px;
         }
 
         .rm-banner {
@@ -309,6 +558,9 @@
             .rm-banner {
                 text-align: center;
             }
+            .rm-hero-shot-caption {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -327,16 +579,35 @@
                 <a href="#workflow">Workflow</a>
                 <a href="#impact">Impact</a>
             </div>
-            <a class="rm-btn rm-btn-secondary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download</a>
+            <div class="rm-cta">
+                <a class="rm-btn rm-btn-secondary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download</a>
+                <a class="rm-btn rm-btn-primary" href="https://reportmapper.lemonsqueezy.com/checkout/buy/8f7cb331-dd3d-4a98-a6ad-9f2ee9f96258">Buy License</a>
+            </div>
         </nav>
 
         <section class="rm-hero">
             <div class="rm-animate">
+                <div class="rm-eyebrow"><span class="rm-dot"></span> Desktop extraction for legacy reports</div>
                 <h1>Turn messy reports into structured data, fast.</h1>
                 <p>ReportMapper helps analysts map legacy reports into clean, usable data without rewriting workflows. Design templates visually, test extractions instantly, and export with confidence.</p>
                 <div class="rm-cta">
                     <a class="rm-btn rm-btn-primary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download for Windows</a>
+                    <a class="rm-btn rm-btn-secondary" href="https://reportmapper.lemonsqueezy.com/checkout/buy/8f7cb331-dd3d-4a98-a6ad-9f2ee9f96258">Buy License</a>
                     <a class="rm-btn rm-btn-secondary" href="#workflow">See how it works</a>
+                </div>
+                <div class="rm-proof-strip">
+                    <div class="rm-proof-chip">
+                        <strong>Works with what you already have</strong>
+                        <span>PDF, PRN, and TXT report sources.</span>
+                    </div>
+                    <div class="rm-proof-chip">
+                        <strong>Start free</strong>
+                        <span>Includes 10 exports per month before upgrade.</span>
+                    </div>
+                    <div class="rm-proof-chip">
+                        <strong>Upgrade path is simple</strong>
+                        <span>Checkout, receive a license key by email, activate in app.</span>
+                    </div>
                 </div>
                 <div class="rm-stat-grid">
                     <div class="rm-stat">
@@ -354,26 +625,49 @@
                 </div>
             </div>
             <div class="rm-hero-card rm-animate rm-animate-delay">
-                <h2>Built for report heavy teams</h2>
-                <p>From operations to finance, ReportMapper turns fixed-width reports into reliable structured data. No code generation required.</p>
-                <div class="rm-steps">
-                    <div class="rm-step">
-                        <strong>Connect</strong>
-                        <div>Load PDFs, text, or PRN files.</div>
-                    </div>
-                    <div class="rm-step">
-                        <strong>Map</strong>
-                        <div>Define zones with precision tools.</div>
-                    </div>
-                    <div class="rm-step">
-                        <strong>Extract</strong>
-                        <div>Preview rows and export clean output.</div>
+                <div class="rm-hero-shot">
+                    <img src="screenshot1.png" alt="ReportMapper interface showing report mapping zones, extraction preview, and structured output table">
+                    <div class="rm-hero-shot-caption">
+                        <span>Map fields visually</span>
+                        <span>Preview extracted rows instantly</span>
+                        <span>Export structured output</span>
                     </div>
                 </div>
+                <div class="rm-panel-label">Why teams keep it in the workflow</div>
+                <h2>Built for report-heavy teams that need output they can trust.</h2>
+                <p>From operations to finance, ReportMapper turns fixed-width reports into reliable structured data without forcing a rebuild of the process around them.</p>
+                <div class="rm-checklist">
+                    <div class="rm-check">Visual template builder with drag, snap, and validation controls.</div>
+                    <div class="rm-check">Batch extraction, monitors, and scheduled runs for recurring reports.</div>
+                    <div class="rm-check">CSV and Excel exports for downstream systems and handoff workflows.</div>
+                </div>
+                
             </div>
         </section>
 
         <section class="rm-section" id="features">
+            <h2>Who this is for</h2>
+            <p>ReportMapper works best for teams that still depend on structured report output but need cleaner handoffs and less manual cleanup.</p>
+            <div class="rm-audience-grid">
+                <div class="rm-audience-card">
+                    <span class="rm-audience-label">Operations</span>
+                    <h3>Teams managing recurring report drops</h3>
+                    <p>Good fit when staff repeatedly pull the same PRN, TXT, or PDF reports and need a repeatable export workflow.</p>
+                </div>
+                <div class="rm-audience-card">
+                    <span class="rm-audience-label">Finance</span>
+                    <h3>Analysts cleaning fixed-width output</h3>
+                    <p>Useful when month-end or daily reporting depends on extracting consistent columns from legacy report formats.</p>
+                </div>
+                <div class="rm-audience-card">
+                    <span class="rm-audience-label">Systems</span>
+                    <h3>Internal teams bridging old and new systems</h3>
+                    <p>Helpful when a modern destination needs structured CSV or Excel output from older reporting tools that cannot export cleanly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="rm-section">
             <h2>Features that keep teams moving</h2>
             <p>Everything you need to transform report chaos into consistent data, delivered in one visual workspace.</p>
             <div class="rm-feature-grid">
@@ -416,16 +710,45 @@
         </section>
 
         <section class="rm-section" id="impact">
-            <h2>Turn report backlog into momentum</h2>
-            <p>Bring clarity to reporting projects with a visual mapping platform built for scale.</p>
+            <h2>Simple pricing, clear upgrade path</h2>
+            <p>Try the workflow on real reports first, then upgrade only when you need unlimited exports.</p>
+            <div class="rm-plan-grid">
+                <div class="rm-plan">
+                    <span class="rm-plan-kicker">Free Tier</span>
+                    <h3>Evaluate the workflow</h3>
+                    <div class="rm-price">$0</div>
+                    <p>Good for proving templates, validating report types, and testing your extraction process.</p>
+                    <ul>
+                        <li>10 exports per month</li>
+                        <li>Full template design workflow</li>
+                        <li>Same desktop app experience</li>
+                    </ul>
+                    <div class="rm-plan-note">Use this before committing to a paid rollout.</div>
+                </div>
+                <div class="rm-plan rm-plan-highlight">
+                    <span class="rm-plan-kicker">Licensed</span>
+                    <h3>Unlock unlimited exports</h3>
+                    <div class="rm-price">Unlimited</div>
+                    <p>Best for recurring operations, production workflows, and teams that rely on scheduled or batch extraction.</p>
+                    <ul>
+                        <li>No monthly export cap</li>
+                        <li>License key emailed after Lemon Squeezy checkout</li>
+                        <li>Activate directly inside ReportMapper</li>
+                    </ul>
+                    <div class="rm-plan-note">Buy once, receive your key by email, then paste it into the app.</div>
+                </div>
+            </div>
         </section>
 
         <section class="rm-banner">
             <div>
                 <h3>Ready to map your next report?</h3>
-                <div>Download the app and start building your first template in minutes.</div>
+                <div>Download the app or request a license to unlock unlimited exports.</div>
             </div>
-            <a class="rm-btn rm-btn-primary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download for Windows</a>
+            <div class="rm-cta">
+                <a class="rm-btn rm-btn-primary" href="https://github.com/BKCoder914/ReportMapper-releases/releases/latest">Download for Windows</a>
+                <a class="rm-btn rm-btn-secondary" href="https://reportmapper.lemonsqueezy.com/checkout/buy/8f7cb331-dd3d-4a98-a6ad-9f2ee9f96258">Buy License</a>
+            </div>
         </section>
 
         <footer class="rm-footer">
