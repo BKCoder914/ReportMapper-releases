@@ -333,6 +333,16 @@
             margin: 0 0 24px;
         }
 
+        .rm-demo-video {
+            display: block;
+            width: min(100%, 960px);
+            margin: 0 auto;
+            border: 1px solid var(--rm-border);
+            border-radius: 20px;
+            background: var(--rm-ink);
+            box-shadow: var(--rm-shadow);
+        }
+
         .rm-feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -507,6 +517,11 @@
             gap: 12px;
         }
 
+        .rm-refund-policy {
+            flex-basis: 100%;
+            margin: 0;
+        }
+
         .rm-footer a {
             color: var(--rm-ink-soft);
             text-decoration: none;
@@ -577,6 +592,7 @@
             <div class="rm-nav-links">
                 <a href="#features">Features</a>
                 <a href="#workflow">Workflow</a>
+                <a href="#demo">Watch demo</a>
                 <a href="#impact">Impact</a>
             </div>
             <div class="rm-cta">
@@ -643,6 +659,15 @@
                 </div>
                 
             </div>
+        </section>
+
+        <section class="rm-section" id="demo">
+            <h2>See ReportMapper in action</h2>
+            <p>Watch how ReportMapper turns legacy reports into clean, structured data.</p>
+            <video class="rm-demo-video" controls preload="metadata" playsinline poster="screenshot1.png">
+                <source src="ReportMapper.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
         </section>
 
         <section class="rm-section" id="features">
@@ -728,14 +753,15 @@
                 <div class="rm-plan rm-plan-highlight">
                     <span class="rm-plan-kicker">Licensed</span>
                     <h3>Unlock unlimited exports</h3>
-                    <div class="rm-price">Unlimited</div>
-                    <p>Best for recurring operations, production workflows, and teams that rely on scheduled or batch extraction.</p>
+                    <div class="rm-price">$149</div>
+                    <div class="rm-plan-note">One-time Lifetime license</div>
+                    <p>Visually map legacy PDF, PRN, and TXT reports into clean CSV/Excel data. Unlimited. Pay once, use forever. Includes email support.</p>
                     <ul>
                         <li>No monthly export cap</li>
                         <li>License key emailed after Lemon Squeezy checkout</li>
                         <li>Activate directly inside ReportMapper</li>
                     </ul>
-                    <div class="rm-plan-note">Buy once, receive your key by email, then paste it into the app.</div>
+                    <div class="rm-plan-note">ReportMapper is covered by a 14-day money-back guarantee from the date of purchase. If it doesn't work for your reports, contact us within 14 days and we'll refund you in full.</div>
                 </div>
             </div>
         </section>
@@ -758,6 +784,7 @@
                 <a href="terms.html">Terms of Service</a>
                 <a href="mailto:support@reportmapper.com">Contact</a>
             </div>
+            <p class="rm-refund-policy">ReportMapper is covered by a 14-day money-back guarantee from the date of purchase. If it doesn't work for your reports, contact us within 14 days and we'll refund you in full.</p>
         </footer>
     </div>
 </body>
